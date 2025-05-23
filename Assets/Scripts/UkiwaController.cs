@@ -6,15 +6,15 @@ public class UkiwaController : MonoBehaviour
 
 {
     GameObject player;
+    public float dropSpeed = -0.03f;
     void Start()
     {
         this.player = GameObject.Find("Ukiwa");
     }
-
     void Update()
     {
-        // フレーム毎に等速で落下させる
-        transform.Translate(0, -0.1f, 0);
+        // 等速で落下させる
+        transform.Translate(0, this.dropSpeed, 0);
 
         // 画面外に出たらオブジェクトを破棄する
         if (transform.position.y < -5.0f)
@@ -23,8 +23,8 @@ public class UkiwaController : MonoBehaviour
         }
 
         // 当たり判定
-        Vector3 p1 = transform.position;             // 矢の中心座標
-        Vector3 p2 = this.player.transform.position; // 猫の中心座標
+        Vector3 p1 = transform.position;             // 中心座標
+        Vector3 p2 = this.player.transform.position; // 中心座標
         Vector3 dir = p1 - p2;
         float d = dir.magnitude;
         float r1 = 0.5f;
@@ -34,11 +34,7 @@ public class UkiwaController : MonoBehaviour
         {
             // 監督スクリプトにプレイやと衝突したことを伝える。
             GameObject director = GameObject.Find("GameDirector");
-            director.GetComponent<GameDirector>().DecreaseHp();
 
-            // 衝突した場合は、猫も消す
-            Destroy(gameObject);
-            // Destroy(player);
         }
     }
 }
