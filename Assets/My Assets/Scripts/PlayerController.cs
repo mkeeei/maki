@@ -4,40 +4,40 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Animator animator;
-    public AudioClip donutSE;
-    public AudioClip duckSE;
-    AudioSource aud;
+    //private Animator animator;
+    //public AudioClip donutSE;
+    //public AudioClip duckSE;
+    //AudioSource aud;
     GameObject director;
     void Start()
     {
         // アニメーションでつけた手をあげる動作を実装
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
 
         Application.targetFrameRate = 60;
-        this.aud = GetComponent<AudioSource>();
-        this.director = GameObject.Find("GameDirector");
+        //this.aud = GetComponent<AudioSource>();
+        //this.director = GameObject.Find("GameDirector");
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Donut")
         {
-            this.aud.PlayOneShot(this.donutSE);
+            //this.aud.PlayOneShot(this.donutSE);
             this.director.GetComponent<GameDirector>().GetDonut();
         }
         else if (other.gameObject.tag == "Duck")
         {
-            this.aud.PlayOneShot(this.duckSE);
+            //this.aud.PlayOneShot(this.duckSE);
             this.director.GetComponent<GameDirector>().GetDuck();
         }
         Destroy(other.gameObject);
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
-            animator.SetTrigger("RaiseHands");
+            //animator.SetTrigger("RaiseHands");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
