@@ -6,12 +6,15 @@ public class UkiwaController : MonoBehaviour
 {
     GameObject UkiwaPrefabs;
     public float dropSpeed = 100000f; // 落下速度
-    
+
+    private void Start()
+    {
+    }
+
     void Update()
     {
         // 等速で落下させる
         transform.Translate(0, this.dropSpeed, 0);
-
 
         // 画面外に出たらオブジェクトを破棄する
         if (transform.position.y < -1.0f)
@@ -20,5 +23,5 @@ public class UkiwaController : MonoBehaviour
         }
     }
 
-    
+
 }

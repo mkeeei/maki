@@ -4086,9 +4086,10 @@ GameObject:
   - component: {fileID: 3624181401964902059}
   - component: {fileID: -6523068830798971526}
   - component: {fileID: 9189910390764304150}
+  - component: {fileID: 5509249688149408318}
   m_Layer: 0
   m_Name: donutPrefab
-  m_TagString: Untagged
+  m_TagString: donutPrefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4149,6 +4150,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &5509249688149408318
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895169763228373872}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &914699766815653298
 GameObject:
   m_ObjectHideFlags: 0

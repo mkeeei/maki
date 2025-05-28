@@ -11,28 +11,46 @@ public class PlayerController : MonoBehaviour
     GameObject director;
     void Start()
     {
+        Application.targetFrameRate = 60;
+        this.director = GameObject.Find("GameDirector");
+
         // アニメーションでつけた手をあげる動作を実装
         //animator = GetComponent<Animator>();
 
-        Application.targetFrameRate = 60;
         //this.aud = GetComponent<AudioSource>();
         //this.director = GameObject.Find("GameDirector");
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Donut")
+        //if (other.gameObject.activeSelf)
+        //{
+        //    //this.aud.PlayOneShot(this.donutSE);
+        //    this.director.GetComponent<GameDirector>().GetDonut();
+        //}
+        //else
+        //{
+        //    //this.aud.PlayOneShot(this.duckSE);
+        //    this.director.GetComponent<GameDirector>().GetDuck();
+        //}
+        //Destroy(other.gameObject);
+
+        // 衝突したオブジェクトのタグを確認
+        if (other.CompareTag("donutPrefab"))
         {
-            //this.aud.PlayOneShot(this.donutSE);
+            // ドーナツに衝突した場合、スコアを加算し、UkiwaPrefabを削除
             this.director.GetComponent<GameDirector>().GetDonut();
+            Destroy(other.gameObject);
         }
-        else if (other.gameObject.tag == "Duck")
+        else if (other.CompareTag("duckPrefab"))
         {
-            //this.aud.PlayOneShot(this.duckSE);
+            // アヒルに衝突した場合、スコアを加算し、UkiwaPrefabを削除
             this.director.GetComponent<GameDirector>().GetDuck();
+            Destroy(other.gameObject);
         }
-        Destroy(other.gameObject);
+        // それ以外のオブジェクトには何もしない
     }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -45,8 +63,9 @@ public class PlayerController : MonoBehaviour
             {
                 float x = Mathf.RoundToInt(hit.point.x);
                 float z = Mathf.RoundToInt(hit.point.z);
-                transform.position = new Vector3(x, 0, z);
+                transform.position = new Vector3(x, 1, z);
             }
         }
+
     }
 }

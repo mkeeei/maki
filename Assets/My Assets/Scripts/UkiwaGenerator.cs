@@ -15,6 +15,15 @@ public class UkiwaGenerator : MonoBehaviour
     public GameObject duckPrefab;
     float span = 2.0f;
     float delta = 0;
+    float speed = -0.03f;
+    int ratio = 2;
+
+    public void SetParameter(float span, float speed, int ratio)
+    {
+        this.span = span;
+        this.speed = speed;
+        this.ratio = ratio;
+    }
     
     void Update()
     {
@@ -42,7 +51,4 @@ public class UkiwaGenerator : MonoBehaviour
     }
 }
 
-//// Ukiwaのプレハブをランダムに選択
-//int tag = Random.Range(0, UkiwaPrefabs.Length);
-//GameObject selectedPrefab = UkiwaPrefabs[tag];
 
