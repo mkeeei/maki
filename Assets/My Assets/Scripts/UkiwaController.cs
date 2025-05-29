@@ -7,10 +7,6 @@ public class UkiwaController : MonoBehaviour
     GameObject UkiwaPrefabs;
     public float dropSpeed = 100000f; // —Ž‰º‘¬“x
 
-    private void Start()
-    {
-    }
-
     void Update()
     {
         // “™‘¬‚Å—Ž‰º‚³‚¹‚é

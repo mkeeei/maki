@@ -19,6 +19,7 @@ public class GameDirector : MonoBehaviour
         this.point += 10000;
     }
 
+
     void Update()
     {
         this.time -= Time.deltaTime;

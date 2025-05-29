@@ -4,51 +4,52 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //private Animator animator;
-    //public AudioClip donutSE;
-    //public AudioClip duckSE;
-    //AudioSource aud;
     GameObject director;
+    private Rigidbody rb;
+    private bool isCaught = false;
+
     void Start()
     {
         Application.targetFrameRate = 60;
         this.director = GameObject.Find("GameDirector");
 
-        // アニメーションでつけた手をあげる動作を実装
-        //animator = GetComponent<Animator>();
-
-        //this.aud = GetComponent<AudioSource>();
-        //this.director = GameObject.Find("GameDirector");
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = true;
+        rb.isKinematic = false;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.activeSelf)
-        //{
-        //    //this.aud.PlayOneShot(this.donutSE);
-        //    this.director.GetComponent<GameDirector>().GetDonut();
-        //}
-        //else
-        //{
-        //    //this.aud.PlayOneShot(this.duckSE);
-        //    this.director.GetComponent<GameDirector>().GetDuck();
-        //}
-        //Destroy(other.gameObject);
 
         // 衝突したオブジェクトのタグを確認
-        if (other.CompareTag("donutPrefab"))
+        if (other.CompareTag("UkiwaPrefab"))
         {
             // ドーナツに衝突した場合、スコアを加算し、UkiwaPrefabを削除
             this.director.GetComponent<GameDirector>().GetDonut();
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("duckPrefab"))
-        {
+
             // アヒルに衝突した場合、スコアを加算し、UkiwaPrefabを削除
             this.director.GetComponent<GameDirector>().GetDuck();
             Destroy(other.gameObject);
         }
-        // それ以外のオブジェクトには何もしない
+        else if (other.CompareTag("Ground"))
+        {
+            // アイテムを地面に残す処理
+            transform.SetParent(other.transform);
+            GetComponent<Rigidbody2D>().isKinematic = true;
+        }
+
+        if (other.CompareTag("UkiwaPrefab") && !isCaught)
+        {
+            isCaught = true;
+            // アイテムを消す処理
+            Destroy(gameObject);
+        }
+        else if (other.CompareTag("Ground"))
+        {
+            // アイテムを地面に残す処理
+            rb.isKinematic = true;
+            // 必要に応じて、アイテムを地面に固定する処理を追加
+        }
     }
 
     void Update()
