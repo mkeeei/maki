@@ -41,9 +41,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4023770408538693657}
     m_Modifications:
+    - target: {fileID: -1558975879618164303, guid: ff88bfbbaf17cce4098b5548dd3b23f4, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2453499730641410454, guid: ff88bfbbaf17cce4098b5548dd3b23f4, type: 3}
       propertyPath: m_Name
       value: duckPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2453499730641410454, guid: ff88bfbbaf17cce4098b5548dd3b23f4, type: 3}
+      propertyPath: m_TagString
+      value: UkiwaPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 7070916464375281598, guid: ff88bfbbaf17cce4098b5548dd3b23f4, type: 3}
       propertyPath: m_LocalScale.x
@@ -119,6 +127,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: donutPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 895169763228373872, guid: ba6423c47360eb04582611da4b6f91c6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 3624181401964902059, guid: ba6423c47360eb04582611da4b6f91c6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.4419
@@ -169,6 +181,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3624181401964902059, guid: ba6423c47360eb04582611da4b6f91c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189910390764304150, guid: ba6423c47360eb04582611da4b6f91c6, type: 3}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

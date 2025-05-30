@@ -9,6 +9,12 @@ public class GameDirector : MonoBehaviour
     int point = 0;
     [SerializeField] TextMeshProUGUI pointText;
     [SerializeField] UkiwaGenerator generator;
+    [SerializeField] DestroyObject _destroyController;
+
+    void Awake()
+    {
+        _destroyController.Init(this);
+    }
 
     public void GetDonut()
     {
