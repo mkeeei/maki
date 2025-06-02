@@ -5,15 +5,42 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     GameObject director;
-    private Rigidbody rb;
+    public AudioClip Ahiru;
+    public AudioClip Donut;
+    AudioSource aud;
+    Rigidbody rb;
+    bool canJump = false;
+    public float jumpPower = 1000f;
+
+    public object Rigidbody { get; private set; }
 
     void Start()
     {
         Application.targetFrameRate = 60;
         this.director = GameObject.Find("GameDirector");
+        this.aud = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody>();
 
     }
-   
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("OnTriggerEnter called with: " + other.gameObject.name);
+
+        if (other.gameObject.CompareTag("ItemDonut"))
+        {
+
+            // ドーナツに衝突した場合→音なる
+            this.aud.PlayOneShot(this.Donut);
+        }
+
+        if (other.gameObject.CompareTag("ItemDuck"))
+        {
+
+            // アヒルに衝突した場合→音なる
+            this.aud.PlayOneShot(this.Ahiru);
+            canJump = true; // ジャンプ可能にする
+        }
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -28,5 +55,23 @@ public class PlayerController : MonoBehaviour
                 transform.position = new Vector3(x, 1, z);
             }
         }
+
+        if (canJump && Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+    }
+
+    /// <summary>
+    /// ジャンプ処理
+    /// </summary>
+    void Jump()
+    {
+        if (rb != null)
+        {
+            rb.AddForce(transform.up * jumpPower, ForceMode.Impulse);
+            Debug.Log("ジャンプした！");
+        }
     }
 }
+
