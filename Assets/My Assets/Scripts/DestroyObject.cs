@@ -8,8 +8,6 @@ public class DestroyObject : MonoBehaviour
     {
         _gameDirector = gameDirector;
     }
-
-
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("OnTriggerEnter called with: " + other.gameObject.name);
